@@ -6,7 +6,7 @@ from telebot.async_telebot import AsyncTeleBot
 # CONFIGURATION
 # ==========================================
 BOT_TOKEN = "8643292970:AAEW9cE9Qsm4zLdvyO1xEFWvhKdFBFhex68"  # Apna bot token yahan dalein
-TARGET_URL = "http://ultra-pay.in/register.php"
+TARGET_URL = "https://www.elitepay.co.in/login"
 
 bot = AsyncTeleBot(BOT_TOKEN)
 
