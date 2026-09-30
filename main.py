@@ -6,7 +6,7 @@ from telebot.async_telebot import AsyncTeleBot
 # CONFIGURATION
 # ==========================================
 BOT_TOKEN = "8607797493:AAEUFBnLIlB-UFvmsb3mMXSP1dtFFGPOGww"  # Apna bot token yahan dalein
-TARGET_URL = "https://www.elitepay.co.in/login"
+TARGET_URL = "www.elitepay.co.in/login"
 
 bot = AsyncTeleBot(BOT_TOKEN)
 
